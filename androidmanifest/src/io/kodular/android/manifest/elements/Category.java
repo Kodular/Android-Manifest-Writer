@@ -1,4 +1,4 @@
-package io.kodular.manifest.android.elements;
+package io.kodular.android.manifest.elements;
 
 public class Category extends BaseElement
 {
