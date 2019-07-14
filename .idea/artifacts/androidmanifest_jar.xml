@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="androidmanifest:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/androidmanifest_jar</output-path>
+    <root id="archive" name="androidmanifest.jar">
+      <element id="module-output" name="androidmanifest" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/androidmanifest/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>
