@@ -34,27 +34,27 @@ public class Application extends BaseElement
         activities.add(activity);
     }
 
-    public void addActivity(MetaData metaData)
+    public void addMetaData(MetaData metaData)
     {
         this.metaData.add(metaData);
     }
 
-    public void addActivity(Provider provider)
+    public void addProvider(Provider provider)
     {
         providers.add(provider);
     }
 
-    public void addActivity(Receiver receiver)
+    public void addReceiver(Receiver receiver)
     {
         receivers.add(receiver);
     }
 
-    public void addActivity(Service service)
+    public void addService(Service service)
     {
         services.add(service);
     }
 
-    public void addActivity(UsesLibrary usesLibrary)
+    public void addUsesLibrary(UsesLibrary usesLibrary)
     {
         usesLibraries.add(usesLibrary);
     }
