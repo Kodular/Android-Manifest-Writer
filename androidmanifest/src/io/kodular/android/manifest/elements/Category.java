@@ -6,4 +6,10 @@ public class Category extends BaseElement
     {
         super("category");
     }
+
+    public Category(String name)
+    {
+        super("action");
+        setName(name);
+    }
 }
