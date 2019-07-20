@@ -4,11 +4,9 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-public class Application extends BaseElement
-{
+public class Application extends BaseElement {
     private List<Activity> activities = new ArrayList<>();
     private List<MetaData> metaData = new ArrayList<>();
     private List<Provider> providers = new ArrayList<>();
@@ -16,8 +14,7 @@ public class Application extends BaseElement
     private List<Service> services = new ArrayList<>();
     private List<UsesLibrary> usesLibraries = new ArrayList<>();
 
-    public Application(String label, String theme, String name, boolean debuggable, String supportsRtl)
-    {
+    public Application(String label, String theme, String name, boolean debuggable, String supportsRtl) {
         super("application");
 
         properties.put("android:theme", theme);
@@ -29,68 +26,55 @@ public class Application extends BaseElement
         properties.put("android:usesCleartextTraffic", "true");
     }
 
-    public void addActivity(Activity activity)
-    {
+    public void addActivity(Activity activity) {
         activities.add(activity);
     }
 
-    public void addActivity(MetaData metaData)
-    {
+    public void addActivity(MetaData metaData) {
         this.metaData.add(metaData);
     }
 
-    public void addActivity(Provider provider)
-    {
+    public void addActivity(Provider provider) {
         providers.add(provider);
     }
 
-    public void addActivity(Receiver receiver)
-    {
+    public void addActivity(Receiver receiver) {
         receivers.add(receiver);
     }
 
-    public void addActivity(Service service)
-    {
+    public void addActivity(Service service) {
         services.add(service);
     }
 
-    public void addActivity(UsesLibrary usesLibrary)
-    {
+    public void addActivity(UsesLibrary usesLibrary) {
         usesLibraries.add(usesLibrary);
     }
 
     @Override
-    public Element toXML(Document document)
-    {
+    public Element toXML(Document document) {
         Element element = super.toXML(document);
 
-        for (Activity activity : activities)
-        {
-            element.appendChild(activity.toXML(document));
+        for (Activity activity : activities) {
+            element.appendChild(activity.toXml(document));
         }
 
-        for (MetaData metaData : this.metaData)
-        {
+        for (MetaData metaData : this.metaData) {
             element.appendChild(metaData.toXML(document));
         }
 
-        for (Provider provider : providers)
-        {
+        for (Provider provider : providers) {
             element.appendChild(provider.toXML(document));
         }
 
-        for (Receiver receiver : receivers)
-        {
+        for (Receiver receiver : receivers) {
             element.appendChild(receiver.toXML(document));
         }
 
-        for (Service service : services)
-        {
+        for (Service service : services) {
             element.appendChild(service.toXML(document));
         }
 
-        for (UsesLibrary usesLibrary : usesLibraries)
-        {
+        for (UsesLibrary usesLibrary : usesLibraries) {
             element.appendChild(usesLibrary.toXML(document));
         }
 

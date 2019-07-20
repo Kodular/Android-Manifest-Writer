@@ -6,23 +6,19 @@ import org.w3c.dom.Element;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Receiver extends BaseElement
-{
+public class Receiver extends BaseElement {
     private List<IntentFilter> intentFilters = new ArrayList<>();
     private List<MetaData> metaData = new ArrayList<>();
 
-    public Receiver()
-    {
+    public Receiver() {
         super("receiver");
     }
 
-    public void addIntentFilter(IntentFilter intentFilter)
-    {
+    public void addIntentFilter(IntentFilter intentFilter) {
         intentFilters.add(intentFilter);
     }
 
-    public void addMetaData(MetaData metaData)
-    {
+    public void addMetaData(MetaData metaData) {
         this.metaData.add(metaData);
     }
 
@@ -55,17 +51,14 @@ public class Receiver extends BaseElement
     }
 
     @Override
-    public Element toXML(Document document)
-    {
+    public Element toXML(Document document) {
         Element element = super.toXML(document);
 
-        for (IntentFilter intentFilter : intentFilters)
-        {
+        for (IntentFilter intentFilter : intentFilters) {
             element.appendChild(intentFilter.toXML(document));
         }
 
-        for (MetaData metaData : this.metaData)
-        {
+        for (MetaData metaData : this.metaData) {
             element.appendChild(metaData.toXML(document));
         }
 

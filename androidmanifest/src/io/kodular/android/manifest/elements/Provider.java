@@ -6,17 +6,14 @@ import org.w3c.dom.Element;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Provider extends BaseElement
-{
+public class Provider extends BaseElement {
     private List<MetaData> metaData = new ArrayList<>();
 
-    public Provider()
-    {
+    public Provider() {
         super("provider");
     }
 
-    public void addMetaData(MetaData metaData)
-    {
+    public void addMetaData(MetaData metaData) {
         this.metaData.add(metaData);
     }
 
@@ -37,12 +34,10 @@ public class Provider extends BaseElement
     }
 
     @Override
-    public Element toXML(Document document)
-    {
+    public Element toXML(Document document) {
         Element element = super.toXML(document);
 
-        for (MetaData metaData : this.metaData)
-        {
+        for (MetaData metaData : this.metaData) {
             element.appendChild(metaData.toXML(document));
         }
 
