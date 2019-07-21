@@ -3,26 +3,39 @@ package io.kodular.android.manifest.elements;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-abstract class BaseElement {
-    final HashMap<String, String> properties = new HashMap<>();
+class BaseElement
+{
+    private final Map<String, String> attributes = new HashMap<>();
+    private final List<BaseElement> children = new ArrayList<>();
     private String tagName;
 
-    BaseElement(String tagName) {
+    public BaseElement(String tagName)
+    {
         this.tagName = tagName;
     }
 
-
-    public void setCustomAttr(String name, String value) {
-        properties.put(name, value);
+    public void addAttribute(String key, String value)
+    {
+        addAttribute(key, value);
     }
 
-    public Element toXML(Document document) {
+    public <T extends BaseElement> void addChild(T element)
+    {
+        children.add(element);
+    }
+
+    public Element toXML(Document document)
+    {
         Element element = document.createElement(tagName);
-        for (HashMap.Entry<String, String> property : properties.entrySet()) {
-            element.setAttribute(property.getKey(), property.getValue());
-        }
+
+        attributes.forEach(element::setAttribute);
+
+        children.forEach(c -> element.appendChild(c.toXML(document)));
 
         return element;
     }

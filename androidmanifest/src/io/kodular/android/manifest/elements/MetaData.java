@@ -1,15 +1,24 @@
 package io.kodular.android.manifest.elements;
 
-public class MetaData extends BaseElement {
-    public MetaData() {
+public class MetaData extends BaseElement
+{
+    public MetaData()
+    {
         super("meta-data");
     }
 
-    public void setValue(String value) {
-        properties.put("android:value", value);
+    public void setName(String name)
+    {
+        addAttribute("android:name", name);
     }
 
-    public void setResource(String resource) {
-        properties.put("android:resource", resource);
+    public void setValue(String value)
+    {
+        addAttribute("android:value", value);
+    }
+
+    public void setResource(String resource)
+    {
+        addAttribute("android:resource", resource);
     }
 }
