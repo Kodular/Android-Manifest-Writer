@@ -6,6 +6,13 @@ public class MetaData extends BaseElement
     {
         super("meta-data");
     }
+    
+    public MetaData(String name, String value)
+    {
+        super("meta-data");
+        setName(name);
+        setValue(value);
+    }
 
     public void setName(String name)
     {

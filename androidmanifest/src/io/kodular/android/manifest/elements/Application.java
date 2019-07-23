@@ -12,27 +12,27 @@ public class Application extends BaseElement
         addChild(activity);
     }
 
-    public void addActivity(MetaData metaData)
+    public void addMetaData(MetaData metaData)
     {
         addChild(metaData);
     }
 
-    public void addActivity(Provider provider)
+    public void addProvider(Provider provider)
     {
         addChild(provider);
     }
 
-    public void addActivity(Receiver receiver)
+    public void addReceiver(Receiver receiver)
     {
         addChild(receiver);
     }
 
-    public void addActivity(Service service)
+    public void addService(Service service)
     {
         addChild(service);
     }
 
-    public void addActivity(UsesLibrary usesLibrary)
+    public void addUsesLibrary(UsesLibrary usesLibrary)
     {
         addChild(usesLibrary);
     }

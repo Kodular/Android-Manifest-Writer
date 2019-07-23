@@ -7,6 +7,12 @@ public class Data extends BaseElement
         super("data");
     }
 
+    public Data(String mimeType)
+    {
+        super("data");
+        setMimeType(mimeType);
+    }
+
     public void setScheme(String scheme)
     {
         addAttribute("android:scheme", scheme);

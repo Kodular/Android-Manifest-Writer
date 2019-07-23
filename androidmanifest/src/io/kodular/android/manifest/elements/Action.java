@@ -6,6 +6,12 @@ public class Action extends BaseElement
     {
         super("action");
     }
+    
+    public Action(String name)
+    {
+        super("action");
+        setName(name);
+    }
 
     public void setName(String name)
     {
