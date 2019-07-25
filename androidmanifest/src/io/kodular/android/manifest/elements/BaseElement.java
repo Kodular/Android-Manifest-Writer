@@ -8,29 +8,24 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-class BaseElement
-{
+class BaseElement {
     private final Map<String, String> attributes = new HashMap<>();
     private final List<BaseElement> children = new ArrayList<>();
     private String tagName;
 
-    public BaseElement(String tagName)
-    {
+    public BaseElement(String tagName) {
         this.tagName = tagName;
     }
 
-    public void addAttribute(String key, String value)
-    {
-        addAttribute(key, value);
+    public void addAttribute(String key, String value) {
+        attributes.put(key, value);
     }
 
-    public <T extends BaseElement> void addChild(T element)
-    {
+    public <T extends BaseElement> void addChild(T element) {
         children.add(element);
     }
 
-    public Element toXML(Document document)
-    {
+    public Element toXML(Document document) {
         Element element = document.createElement(tagName);
 
         attributes.forEach(element::setAttribute);

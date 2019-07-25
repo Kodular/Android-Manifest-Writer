@@ -1,40 +1,32 @@
 package io.kodular.android.manifest.elements;
 
-public class Permission extends BaseElement
-{
+public class Permission extends BaseElement {
 
-    public Permission()
-    {
+    public Permission() {
         super("permission");
     }
 
-    public void setDescription(String description)
-    {
+    public void setDescription(String description) {
         addAttribute("android:description", description);
     }
 
-    public void setIcon(String icon)
-    {
+    public void setIcon(String icon) {
         addAttribute("android:icon", icon);
     }
 
-    public void setLabel(String label)
-    {
+    public void setLabel(String label) {
         addAttribute("android:label", label);
     }
 
-    public void setPermissionGroup(String permissionGroup)
-    {
+    public void setPermissionGroup(String permissionGroup) {
         addAttribute("android:permissionGroup", permissionGroup);
     }
 
-    public void setProtectionLevel(ProtectionLevel protectionLevel)
-    {
+    public void setProtectionLevel(ProtectionLevel protectionLevel) {
         addAttribute("android:protectionLevel", protectionLevel.toString().toLowerCase());
     }
 
-    enum ProtectionLevel
-    {
+    enum ProtectionLevel {
         NORMAL,
         DANGEROUS,
         SIGNATURE

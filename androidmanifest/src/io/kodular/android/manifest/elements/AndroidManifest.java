@@ -9,8 +9,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AndroidManifest extends BaseElement
-{
+public class AndroidManifest extends BaseElement {
     private Application application;
     private UsesSDK usesSDK = null;
 
@@ -18,8 +17,7 @@ public class AndroidManifest extends BaseElement
     private List<UsesFeature> usesFeatures = new ArrayList<>();
     private List<UsesPermission> usesPermissions = new ArrayList<>();
 
-    public AndroidManifest(String packageName)
-    {
+    public AndroidManifest(String packageName) {
         super("manifest");
 
         addAttribute("xmlns:android", "http://schemas.android.com/apk/res/android");
@@ -27,16 +25,14 @@ public class AndroidManifest extends BaseElement
         addAttribute("android:installLocation", "auto");
     }
 
-    public AndroidManifest(String packageName, String versionCode, String versionName)
-    {
+    public AndroidManifest(String packageName, String versionCode, String versionName) {
         super(packageName);
 
         setVersionCode(versionCode);
         setVersionName(versionName);
     }
 
-    public Document getManifest() throws ParserConfigurationException
-    {
+    public Document getManifest() throws ParserConfigurationException {
         DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
         Document doc = docBuilder.newDocument();
@@ -47,68 +43,49 @@ public class AndroidManifest extends BaseElement
         return doc;
     }
 
-    public Application getApplication()
-    {
+    public Application getApplication() {
         return application;
     }
 
-    public void setApplication(Application application)
-    {
+    public void setApplication(Application application) {
         this.application = application;
     }
 
-    public void setUsesSDK(UsesSDK usesSDK)
-    {
+    public void setUsesSDK(UsesSDK usesSDK) {
         this.usesSDK = usesSDK;
     }
 
-    public void addPermission(Permission permission)
-    {
+    public void addPermission(Permission permission) {
         permissions.add(permission);
     }
 
-    public void addUsesFeature(UsesFeature usesFeature)
-    {
+    public void addUsesFeature(UsesFeature usesFeature) {
         usesFeatures.add(usesFeature);
     }
 
-    public void addUsesPermission(UsesPermission usesPermission)
-    {
+    public void addUsesPermission(UsesPermission usesPermission) {
         usesPermissions.add(usesPermission);
     }
 
-    public void setVersionCode(String versionCode)
-    {
+    public void setVersionCode(String versionCode) {
         addAttribute("android:versionCode", versionCode);
     }
 
-    public void setVersionName(String versionName)
-    {
+    public void setVersionName(String versionName) {
         addAttribute("android:versionName", versionName);
     }
 
     @Override
-    public Element toXML(Document document)
-    {
+    public Element toXML(Document document) {
         Element element = super.toXML(document);
 
-        for (Permission permission : permissions)
-        {
-            element.appendChild(permission.toXML(document));
-        }
+        permissions.stream().map(permission -> permission.toXML(document)).forEach(element::appendChild);
 
-        for (UsesPermission usesPermission : usesPermissions)
-        {
-            element.appendChild(usesPermission.toXML(document));
-        }
+        usesPermissions.stream().map(usesPermission -> usesPermission.toXML(document)).forEach(element::appendChild);
 
-        for (UsesFeature usesFeature : usesFeatures)
-        {
-            element.appendChild(usesFeature.toXML(document));
-        }
+        usesFeatures.stream().map(usesFeature -> usesFeature.toXML(document)).forEach(element::appendChild);
 
-        if (usesSDK != null)
-            element.appendChild(usesSDK.toXML(document));
+        if (usesSDK != null) element.appendChild(usesSDK.toXML(document));
 
         element.appendChild(application.toXML(document));
 
