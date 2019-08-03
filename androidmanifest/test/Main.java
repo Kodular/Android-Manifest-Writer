@@ -1,11 +1,11 @@
 import io.kodular.android.manifest.AndroidManifestPoet;
-import io.kodular.android.manifest.elements.*;
-
-import javax.xml.parsers.ParserConfigurationException;
+import io.kodular.android.manifest.elements.Activity;
+import io.kodular.android.manifest.elements.Application;
+import io.kodular.android.manifest.elements.Manifest;
+import io.kodular.android.manifest.elements.UsesSdk;
 
 public class Main {
-
-    public static void main(String[] args) throws ParserConfigurationException {
+    public static void main(String[] args) {
         Manifest manifest = new Manifest("io.kodular.test", "1", "1.0");
 
         UsesSdk usesSdk = new UsesSdk().setMinSdkVersion(16).setTargetSdkVersion(28);
