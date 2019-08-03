@@ -1,16 +1,12 @@
 package io.kodular.android.manifest.elements;
 
+/**
+ * See https://developer.android.com/guide/topics/manifest/action-element
+ */
 public class Action extends BaseElement {
-    public Action() {
-        super("action");
-    }
-
     public Action(String name) {
         super("action");
-        setName(name);
-    }
 
-    public void setName(String name) {
-        addAttribute("android:name", name);
+        addAttribute("android:name", name.startsWith("ACTION_") ? "android.intent.action." + name.substring("ACTION_".length()) : name);
     }
 }

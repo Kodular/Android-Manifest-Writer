@@ -6,6 +6,6 @@ public class UsesLibrary extends BaseElement {
     }
 
     public void setRequired(boolean required) {
-        addAttribute("android:required", , String.valueOf(required)))
+        addAttribute("android:required", String.valueOf(required));
     }
 }

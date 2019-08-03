@@ -1,5 +1,8 @@
 package io.kodular.android.manifest.elements;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 public class Activity extends BaseElement {
     public Activity() {
         super("activity");
@@ -9,12 +12,14 @@ public class Activity extends BaseElement {
         addAttribute("android:name", name);
     }
 
-    public void setConfigChanges(String configChanges) {
-        addAttribute("android:configChanges", configChanges);
+    public Activity setConfigChanges(ConfigChanges... configChanges) {
+        addAttribute("android:configChanges", Arrays.stream(configChanges).map(ConfigChanges::name).collect(Collectors.joining("|")));
+        return this;
     }
 
-    public void setExcludeFromRecents(boolean excludeFromRecents) {
+    public Activity setExcludeFromRecents(boolean excludeFromRecents) {
         addAttribute("android:excludeFromRecents", String.valueOf(excludeFromRecents));
+        return this;
     }
 
     public void setExported(boolean exported) {
@@ -44,4 +49,10 @@ public class Activity extends BaseElement {
     public void addMetaData(MetaData metaData) {
         addChild(metaData);
     }
+
+    public enum ConfigChanges {
+        mcc, mnc, locale, touchscreen, keyboard, keyboardHidden, navigation, screenLayout, fontScale, uiMode,
+        orientation, density, screenSize, smallestScreenSize
+    }
 }
+
