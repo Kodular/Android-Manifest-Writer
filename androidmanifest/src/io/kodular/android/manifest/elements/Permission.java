@@ -1,53 +1,34 @@
 package io.kodular.android.manifest.elements;
 
-public class Permission extends BaseElement
-{
-    public static final String PROTECTION_NORMAL = "normal";
-    public static final String PROTECTION_DANGEROUS = "dangerous";
-    public static final String PROTECTION_SIGNATURE = "signature";
+public class Permission extends BaseElement {
 
-    public Permission()
-    {
+    public Permission() {
         super("permission");
     }
 
-    public Permission(String permission)
-    {
-        super("permission");
-
-        setName(permission);
+    public void setDescription(String description) {
+        addAttribute("android:description", description);
     }
 
-    public Permission(String permission, String protectionLevel)
-    {
-        super("permission");
-
-        setName(permission);
-        setProtectionLevel(protectionLevel);
+    public void setIcon(String icon) {
+        addAttribute("android:icon", icon);
     }
 
-    public void setDescription(String description)
-    {
-        properties.put("android:description", description);
+    public void setLabel(String label) {
+        addAttribute("android:label", label);
     }
 
-    public void setIcon(String icon)
-    {
-        properties.put("android:icon", icon);
+    public void setPermissionGroup(String permissionGroup) {
+        addAttribute("android:permissionGroup", permissionGroup);
     }
 
-    public void setLabel(String label)
-    {
-        properties.put("android:label", label);
+    public void setProtectionLevel(ProtectionLevel protectionLevel) {
+        addAttribute("android:protectionLevel", protectionLevel.toString().toLowerCase());
     }
 
-    public void setPermissionGroup(String permissionGroup)
-    {
-        properties.put("android:permissionGroup", permissionGroup);
-    }
-
-    public void setProtectionLevel(String protectionLevel)
-    {
-        properties.put("android:protectionLevel", protectionLevel);
+    enum ProtectionLevel {
+        NORMAL,
+        DANGEROUS,
+        SIGNATURE
     }
 }

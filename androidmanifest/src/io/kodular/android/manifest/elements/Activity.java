@@ -1,81 +1,58 @@
 package io.kodular.android.manifest.elements;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class Activity extends BaseElement
-{
-    private List<IntentFilter> intentFilters = new ArrayList<>();
-    private List<MetaData> metaData = new ArrayList<>();
-
-    public Activity()
-    {
+public class Activity extends BaseElement {
+    public Activity() {
         super("activity");
     }
 
-    public void addIntentFilter(IntentFilter intentFilter)
-    {
-        intentFilters.add(intentFilter);
+    public void setName(String name) {
+        addAttribute("android:name", name);
     }
 
-    public void addMetaData(MetaData metaData)
-    {
-        this.metaData.add(metaData);
+    public Activity setConfigChanges(ConfigChanges... configChanges) {
+        addAttribute("android:configChanges", Arrays.stream(configChanges).map(ConfigChanges::name).collect(Collectors.joining("|")));
+        return this;
     }
 
-    public void setConfigChanges(String configChanges)
-    {
-        properties.put("android:configChanges", configChanges);
+    public Activity setExcludeFromRecents(boolean excludeFromRecents) {
+        addAttribute("android:excludeFromRecents", String.valueOf(excludeFromRecents));
+        return this;
     }
 
-    public void setExcludeFromRecents(boolean excludeFromRecents)
-    {
-        properties.put("android:excludeFromRecents", excludeFromRecents ? "true" : "false");
+    public void setExported(boolean exported) {
+        addAttribute("android:exported", String.valueOf(exported));
     }
 
-    public void setExported(boolean exported)
-    {
-        properties.put("android:exported", exported ? "true" : "false");
+    public void setHardwareAccelerated(boolean hardwareAccelerated) {
+        addAttribute("android:hardwareAccelerated", String.valueOf(hardwareAccelerated));
     }
 
-    public void setHardwareAccelerated(boolean hardwareAccelerated)
-    {
-        properties.put("android:hardwareAccelerated", hardwareAccelerated ? "true" : "false");
+    public void setLaunchMode(String launchMode) {
+        addAttribute("android:launchMode", launchMode);
     }
 
-    public void setLaunchMode(String launchMode)
-    {
-        properties.put("android:hardwareAccelerated", launchMode);
+    public void setPermission(String permission) {
+        addAttribute("android:permission", permission);
     }
 
-    public void setPermission(String permission)
-    {
-        properties.put("android:permission", permission);
+    public void setTheme(String theme) {
+        addAttribute("android:theme", theme);
     }
 
-    public void setTheme(String theme)
-    {
-        properties.put("android:theme", theme);
+    public void addIntentFilter(IntentFilter intentFilter) {
+        addChild(intentFilter);
     }
 
-    @Override
-    public Element toXML(Document document)
-    {
-        Element element = super.toXML(document);
+    public void addMetaData(MetaData metaData) {
+        addChild(metaData);
+    }
 
-        for (IntentFilter intentFilter : intentFilters)
-        {
-            element.appendChild(intentFilter.toXML(document));
-        }
-
-        for (MetaData metaData : this.metaData)
-        {
-            element.appendChild(metaData.toXML(document));
-        }
-
-        return element;
+    public enum ConfigChanges {
+        mcc, mnc, locale, touchscreen, keyboard, keyboardHidden, navigation, screenLayout, fontScale, uiMode,
+        orientation, density, screenSize, smallestScreenSize
     }
 }
+

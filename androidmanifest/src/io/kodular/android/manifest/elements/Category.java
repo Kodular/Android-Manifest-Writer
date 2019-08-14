@@ -1,15 +1,8 @@
 package io.kodular.android.manifest.elements;
 
-public class Category extends BaseElement
-{
-    public Category()
-    {
+public class Category extends BaseElement {
+    public Category(String name) {
         super("category");
-    }
-
-    public Category(String name)
-    {
-        super("action");
-        setName(name);
+        addAttribute("android:name", name);
     }
 }
