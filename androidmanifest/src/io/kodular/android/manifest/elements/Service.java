@@ -15,8 +15,8 @@ public class Service extends BaseElement {
         return this;
     }
 
-    public Service setName(String description) {
-        addAttribute("android:description", description);
+    public Service setName(String name) {
+        addAttribute("android:name", name);
         return this;
     }
 
