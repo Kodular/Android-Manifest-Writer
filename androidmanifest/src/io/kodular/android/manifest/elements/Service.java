@@ -13,39 +13,53 @@ public class Service extends BaseElement {
         addChild(metaData);
     }
 
-    public void setDescription(String description) {
+    public Service setName(String description) {
         addAttribute("android:description", description);
+        return this;
     }
 
-    public void setDirectBootAware(boolean directBootAware) {
+    public Service setDescription(String description) {
+        addAttribute("android:description", description);
+        return this;
+    }
+
+    public Service setDirectBootAware(boolean directBootAware) {
         addAttribute("android:directBootAware", String.valueOf(directBootAware));
+        return this;
     }
 
-    public void setEnabled(boolean enabled) {
+    public Service setEnabled(boolean enabled) {
         addAttribute("android:enabled", String.valueOf(enabled));
+        return this;
     }
 
-    public void setExported(boolean exported) {
+    public Service setExported(boolean exported) {
         addAttribute("android:exported", String.valueOf(exported));
+        return this;
     }
 
-    public void setIcon(String icon) {
+    public Service setIcon(String icon) {
         addAttribute("android:icon", icon);
+        return this;
     }
 
-    public void setIsolatedProcess(boolean isolatedProcess) {
+    public Service setIsolatedProcess(boolean isolatedProcess) {
         addAttribute("android:isolatedProcess", String.valueOf(isolatedProcess));
+        return this;
     }
 
-    public void setLabel(String label) {
+    public Service setLabel(String label) {
         addAttribute("android:label", label);
+        return this;
     }
 
-    public void setPermission(String permission) {
+    public Service setPermission(String permission) {
         addAttribute("android:permission", permission);
+        return this;
     }
 
-    public void setProcess(String process) {
+    public Service setProcess(String process) {
         addAttribute("android:process", process);
+        return this;
     }
 }
