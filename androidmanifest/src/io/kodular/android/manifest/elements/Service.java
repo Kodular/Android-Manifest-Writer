@@ -5,12 +5,14 @@ public class Service extends BaseElement {
         super("service");
     }
 
-    public void addIntentFilter(IntentFilter intentFilter) {
+    public Service addIntentFilter(IntentFilter intentFilter) {
         addChild(intentFilter);
+        return this;
     }
 
-    public void addMetaData(MetaData metaData) {
+    public Service addMetaData(MetaData metaData) {
         addChild(metaData);
+        return this;
     }
 
     public Service setName(String description) {
