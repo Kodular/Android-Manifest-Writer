@@ -21,6 +21,14 @@ public abstract class BaseElement {
         attributes.put(key, value);
     }
 
+    public void addAttribute(String key, boolean value) {
+        attributes.put(key, String.valueOf(value));
+    }
+
+    public void addAttribute(String key, int value) {
+        attributes.put(key, String.valueOf(value));
+    }
+
     public <T extends BaseElement> void addChild(T element) {
         children.add(element);
     }
