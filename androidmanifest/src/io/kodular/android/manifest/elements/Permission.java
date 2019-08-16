@@ -6,24 +6,34 @@ public class Permission extends BaseElement {
         super("permission");
     }
 
-    public void setDescription(String description) {
+    public Permission(String name) {
+        super("permission");
+        addAttribute("android:name", name);
+    }
+
+    public Permission setDescription(String description) {
         addAttribute("android:description", description);
+        return this;
     }
 
-    public void setIcon(String icon) {
+    public Permission setIcon(String icon) {
         addAttribute("android:icon", icon);
+        return this;
     }
 
-    public void setLabel(String label) {
+    public Permission setLabel(String label) {
         addAttribute("android:label", label);
+        return this;
     }
 
-    public void setPermissionGroup(String permissionGroup) {
+    public Permission setPermissionGroup(String permissionGroup) {
         addAttribute("android:permissionGroup", permissionGroup);
+        return this;
     }
 
-    public void setProtectionLevel(ProtectionLevel protectionLevel) {
+    public Permission setProtectionLevel(ProtectionLevel protectionLevel) {
         addAttribute("android:protectionLevel", protectionLevel.toString().toLowerCase());
+        return this;
     }
 
     enum ProtectionLevel {
