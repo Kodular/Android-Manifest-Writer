@@ -1,5 +1,6 @@
 package io.kodular.android.manifest.elements;
 
+import io.kodular.android.manifest.utils.XmlString;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -27,6 +28,10 @@ public abstract class BaseElement {
 
     public void addAttribute(String key, int value) {
         attributes.put(key, String.valueOf(value));
+    }
+
+    public void addChild(String xmlString) {
+        addChild(XmlString.getElement(xmlString));
     }
 
     public <T extends BaseElement> void addChild(T element) {
