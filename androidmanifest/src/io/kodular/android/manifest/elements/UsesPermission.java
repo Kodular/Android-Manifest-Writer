@@ -5,7 +5,13 @@ public class UsesPermission extends BaseElement {
         super("uses-permission");
     }
 
-    public void setMaxSdkVersion(String maxSdkVersion) {
+    public UsesPermission(String name) {
+        super("uses-permission");
+        addAttribute("android:name", name);
+    }
+
+    public UsesPermission setMaxSdkVersion(String maxSdkVersion) {
         addAttribute("android:maxSdkVersion", maxSdkVersion);
+        return this;
     }
 }
