@@ -5,27 +5,33 @@ public class IntentFilter extends BaseElement {
         super("intent-filter");
     }
 
-    public void addAction(Action action) {
+    public IntentFilter addAction(Action action) {
         addChild(action);
+        return this;
     }
 
-    public void addCategory(Category category) {
+    public IntentFilter addCategory(Category category) {
         addChild(category);
+        return this;
     }
 
-    public void addData(Data data) {
+    public IntentFilter addData(Data data) {
         addChild(data);
+        return this;
     }
 
-    public void setIcon(String icon) {
+    public IntentFilter setIcon(String icon) {
         addAttribute("android:icon", icon);
+        return this;
     }
 
-    public void setLabel(String label) {
+    public IntentFilter setLabel(String label) {
         addAttribute("android:label", label);
+        return this;
     }
 
-    public void setPriority(String priority) {
+    public IntentFilter setPriority(String priority) {
         addAttribute("android:priority", priority);
+        return this;
     }
 }
