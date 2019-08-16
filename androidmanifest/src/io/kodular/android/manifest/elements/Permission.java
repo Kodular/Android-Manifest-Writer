@@ -36,7 +36,7 @@ public class Permission extends BaseElement {
         return this;
     }
 
-    enum ProtectionLevel {
+    public enum ProtectionLevel {
         NORMAL,
         DANGEROUS,
         SIGNATURE
