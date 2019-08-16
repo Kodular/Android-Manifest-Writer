@@ -5,11 +5,18 @@ public class UsesFeature extends BaseElement {
         super("uses-feature");
     }
 
-    public void setRequired(boolean required) {
-        addAttribute("android:required", String.valueOf(required));
+    public UsesFeature(String name) {
+        super("uses-feature");
+        addAttribute("android:name", name);
     }
 
-    public void setGlEsVersion(String glEsVersion) {
+    public UsesFeature setRequired(boolean required) {
+        addAttribute("android:required", String.valueOf(required));
+        return this;
+    }
+
+    public UsesFeature setGlEsVersion(String glEsVersion) {
         addAttribute("android:glEsVersion", glEsVersion);
+        return this;
     }
 }
