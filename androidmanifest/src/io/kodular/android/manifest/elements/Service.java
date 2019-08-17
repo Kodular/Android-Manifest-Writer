@@ -66,7 +66,7 @@ public class Service extends BaseElement {
     }
 
     public Service setStopWithTask(boolean stopWithTask) {
-        addAttribute("android:process", String.valueOf(stopWithTask));
+        addAttribute("android:stopWithTask", String.valueOf(stopWithTask));
         return this;
     }
 }
