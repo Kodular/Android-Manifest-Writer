@@ -31,7 +31,7 @@ public class Provider extends BaseElement {
     }
 
     public Provider setInitOrder(String initOrder) {
-        addAttribute("android:permission", initOrder);
+        addAttribute("android:initOrder", initOrder);
         return this;
     }
 }
