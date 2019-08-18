@@ -18,6 +18,7 @@ public class Manifest extends BaseElement {
         super("manifest");
 
         addAttribute("xmlns:android", "http://schemas.android.com/apk/res/android");
+        addAttribute("xmlns:tools", "http://schemas.android.com/tools");
         addAttribute("package", packageName);
         addAttribute("android:versionCode", versionCode);
         addAttribute("android:versionName", versionName);
