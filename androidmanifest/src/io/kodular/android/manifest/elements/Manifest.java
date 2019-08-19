@@ -1,18 +1,16 @@
 package io.kodular.android.manifest.elements;
 
 import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import java.io.StringWriter;
 
 public class Manifest extends BaseElement {
-    private Application application;
-    private UsesSdk usesSdk;
-
-    private List<Permission> permissions = new ArrayList<>();
-    private List<UsesFeature> usesFeatures = new ArrayList<>();
-    private List<UsesPermission> usesPermissions = new ArrayList<>();
 
     public Manifest(String packageName, String versionCode, String versionName) {
         super("manifest");
@@ -25,36 +23,45 @@ public class Manifest extends BaseElement {
     }
 
     public void setUsesSdk(UsesSdk usesSdk) {
-        this.usesSdk = usesSdk;
+        addChild(usesSdk);
     }
 
     public void setApplication(Application application) {
-        this.application = application;
+        addChild(application);
     }
 
     public void addPermission(Permission permission) {
-        permissions.add(permission);
+        addChild(permission);
     }
 
     public void addUsesFeature(UsesFeature usesFeature) {
-        usesFeatures.add(usesFeature);
+        addChild(usesFeature);
     }
 
     public void addUsesPermission(UsesPermission usesPermission) {
-        usesPermissions.add(usesPermission);
+        addChild(usesPermission);
     }
 
-    @Override
-    public Element getElement(Document document) {
-        Element element = super.getElement(document);
+    public String toXmlString() {
+        try {
+            Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
 
-        permissions.stream().map(permission -> permission.getElement(document)).forEach(element::appendChild);
-        usesPermissions.stream().map(usesPermission -> usesPermission.getElement(document)).forEach(element::appendChild);
-        usesFeatures.stream().map(usesFeature -> usesFeature.getElement(document)).forEach(element::appendChild);
+            doc.appendChild(getElement(doc));
 
-        element.appendChild(usesSdk.getElement(document));
-        element.appendChild(application.getElement(document));
+            StringWriter sw = new StringWriter();
 
-        return element;
+            Transformer transformer = TransformerFactory.newInstance().newTransformer();
+
+            transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "no");
+            transformer.setOutputProperty(OutputKeys.METHOD, "xml");
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+
+            transformer.transform(new DOMSource(doc), new StreamResult(sw));
+
+            return sw.toString();
+        } catch (Exception e) {
+            throw new RuntimeException("Error converting to String", e);
+        }
     }
 }

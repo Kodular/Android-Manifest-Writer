@@ -17,15 +17,15 @@ public abstract class BaseElement {
         this.tagName = tagName;
     }
 
-    public void addAttribute(String key, String value) {
+    protected void addAttribute(String key, String value) {
         attributes.put(key, value);
     }
 
-    public <T extends BaseElement> void addChild(T element) {
+    <T extends BaseElement> void addChild(T element) {
         children.add(element);
     }
 
-    public Element getElement(Document document) {
+    Element getElement(Document document) {
         Element element = document.createElement(tagName);
 
         attributes.forEach(element::setAttribute);
