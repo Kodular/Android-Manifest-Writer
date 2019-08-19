@@ -5,23 +5,33 @@ public class Provider extends BaseElement {
         super("provider");
     }
 
-    public void addMetaData(MetaData metaData) {
+    public Provider addMetaData(MetaData metaData) {
         addChild(metaData);
+        return this;
     }
 
-    public void setExported(boolean exported) {
+    public Provider setName(String name) {
+        addAttribute("android:name", name);
+        return this;
+    }
+
+    public Provider setExported(boolean exported) {
         addAttribute("android:exported", String.valueOf(exported));
+        return this;
     }
 
-    public void setGrantUriPermissions(boolean grantUriPermissions) {
+    public Provider setGrantUriPermissions(boolean grantUriPermissions) {
         addAttribute("android:grantUriPermissions", String.valueOf(grantUriPermissions));
+        return this;
     }
 
-    public void setAuthorities(String authorities) {
+    public Provider setAuthorities(String authorities) {
         addAttribute("android:authorities", authorities);
+        return this;
     }
 
-    public void setInitOrder(String initOrder) {
-        addAttribute("android:permission", initOrder);
+    public Provider setInitOrder(String initOrder) {
+        addAttribute("android:initOrder", initOrder);
+        return this;
     }
 }

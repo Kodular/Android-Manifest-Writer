@@ -5,7 +5,13 @@ public class UsesLibrary extends BaseElement {
         super("uses-library");
     }
 
-    public void setRequired(boolean required) {
+    public UsesLibrary setName(String name) {
+        addAttribute("android:name", name);
+        return this;
+    }
+
+    public UsesLibrary setRequired(boolean required) {
         addAttribute("android:required", String.valueOf(required));
+        return this;
     }
 }
