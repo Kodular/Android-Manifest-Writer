@@ -1,7 +1,6 @@
 package io.kodular.android.manifest.elements;
 
-import java.util.Arrays;
-import java.util.stream.Collectors;
+import io.kodular.android.manifest.utils.Util;
 
 public class Activity extends BaseElement {
     public Activity() {
@@ -14,7 +13,7 @@ public class Activity extends BaseElement {
     }
 
     public Activity setConfigChanges(ConfigChanges... configChanges) {
-        addAttribute("android:configChanges", Arrays.stream(configChanges).map(ConfigChanges::name).collect(Collectors.joining("|")));
+        addAttribute("android:configChanges", Util.join("|", configChanges));
         return this;
     }
 

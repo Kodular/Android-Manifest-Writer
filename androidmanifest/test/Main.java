@@ -19,7 +19,7 @@ public class Main {
         application.addActivity(activity);
 
         manifest.setApplication(application);
-
-        System.out.println(manifest.toXmlString());
+      
+        System.out.println(BaseElement.toXmlString(manifest));
     }
 }
