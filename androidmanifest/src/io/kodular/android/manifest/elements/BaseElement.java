@@ -4,6 +4,13 @@ import io.kodular.android.manifest.utils.XmlString;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -41,14 +48,37 @@ public abstract class BaseElement {
     public Element getElement(Document document) {
         Element element = document.createElement(tagName);
 
-        attributes.forEach(element::setAttribute);
+        for (Map.Entry<String, String> entry : attributes.entrySet()) {
+            element.setAttribute(entry.getKey(), entry.getValue());
+        }
 
-        children.forEach(c -> element.appendChild(c.getElement(document)));
-
-//        FOR DEBUGGING, UNCOMMENT THE FOLLOWING TWO LINES
-//        attributes.forEach((a, b) -> System.out.printf("(%s) %s = %s\n", tagName, a, b));
-//        children.forEach(c -> System.out.printf("(%s) %s\n", tagName, c.toXml(document)));
+        for (BaseElement el : children) {
+            element.appendChild(el.getElement(document));
+        }
 
         return element;
+    }
+
+    public static String toXmlString(BaseElement el) {
+        try {
+            Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
+
+            doc.appendChild(el.getElement(doc));
+
+            StringWriter sw = new StringWriter();
+
+            Transformer transformer = TransformerFactory.newInstance().newTransformer();
+
+            transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "no");
+            transformer.setOutputProperty(OutputKeys.METHOD, "xml");
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+
+            transformer.transform(new DOMSource(doc), new StreamResult(sw));
+
+            return sw.toString();
+        } catch (Exception e) {
+            throw new RuntimeException("Error converting to String", e);
+        }
     }
 }

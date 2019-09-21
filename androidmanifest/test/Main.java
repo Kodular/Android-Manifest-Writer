@@ -1,8 +1,4 @@
-import io.kodular.android.manifest.AndroidManifestPoet;
-import io.kodular.android.manifest.elements.Activity;
-import io.kodular.android.manifest.elements.Application;
-import io.kodular.android.manifest.elements.Manifest;
-import io.kodular.android.manifest.elements.UsesSdk;
+import io.kodular.android.manifest.elements.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -22,6 +18,6 @@ public class Main {
 
         manifest.setApplication(application);
 
-        System.out.println(AndroidManifestPoet.toXmlString(manifest));
+        System.out.println(BaseElement.toXmlString(manifest));
     }
 }
