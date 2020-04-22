@@ -1,6 +1,6 @@
-package io.kodular.android.manifest.elements;
+package io.kodular.android.manifest;
 
-public class Receiver extends BaseElement {
+public class Receiver {
     public Receiver() {
         super("receiver");
     }

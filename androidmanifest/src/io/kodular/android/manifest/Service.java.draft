@@ -1,6 +1,6 @@
-package io.kodular.android.manifest.elements;
+package io.kodular.android.manifest;
 
-public class Service extends BaseElement {
+public class Service {
     public Service() {
         super("service");
     }

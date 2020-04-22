@@ -1,0 +1,1 @@
+package io.kodular.android.manifest;

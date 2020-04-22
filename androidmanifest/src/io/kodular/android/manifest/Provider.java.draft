@@ -1,6 +1,6 @@
-package io.kodular.android.manifest.elements;
+package io.kodular.android.manifest;
 
-public class Provider extends BaseElement {
+public class Provider {
     public Provider() {
         super("provider");
     }

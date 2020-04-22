@@ -1,4 +1,4 @@
-package io.kodular.android.manifest.utils;
+package io.kodular.android.manifest;
 
 public final class Util {
     private Util() {
